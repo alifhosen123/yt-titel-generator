@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইউটিউব টাইটেল জেনারেটর - প্রফেশনাল টুল</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #06d6a0;
+            --accent: #ff6b6b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --card-bg: rgba(30, 41, 59, 0.92);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.5);
+            transform: rotate(15deg);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .ai-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), #5e60ce);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(94, 96, 206, 0.4);
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(6, 214, 160, 0.2);
+        }
+        
+        .card-title i {
+            background: rgba(6, 214, 160, 0.15);
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 45px;
+            color: var(--gray);
+            font-size: 18px;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 16px 16px 16px 45px;
+            border-radius: 12px;
+            border: 2px solid rgba(99, 102, 241, 0.25);
+            background: rgba(15, 23, 42, 0.7);
+            color: white;
+            font-family: inherit;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+        
+        select:focus, input:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.25);
+            background: rgba(15, 23, 42, 0.9);
+        }
+        
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+            padding-left: 20px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.15rem;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.5);
+            margin: 30px auto 0;
+            width: 100%;
+            max-width: 320px;
+            letter-spacing: 0.5px;
+        }
+        
+        button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(67, 97, 238, 0.6);
+        }
+        
+        button:active {
+            transform: translateY(0) scale(1);
+        }
+        
+        button:disabled {
+            background: linear-gradient(135deg, #64748b, #475569);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
+        }
+        
+        .result-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border-radius: 18px;
+            padding: 25px;
+            border-left: 5px solid var(--primary);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .result-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 18px;
+            color: var(--light);
+            line-height: 1.5;
+            min-height: 80px;
+        }
+        
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .hashtag {
+            background: rgba(67, 97, 238, 0.15);
+            color: #93c5fd;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .hashtag:hover {
+            background: rgba(67, 97, 238, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .viral-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--accent), #ff9e66);
+            color: white;
+            font-size: 0.85rem;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .seo-score {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--gray);
+            gap: 10px;
+        }
+        
+        .seo-score strong {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .loader {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .loader-spinner {
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.2s linear infinite;
+            margin: 0 auto 25px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            letter-spacing: 0.5px;
+        }
+        
+        .refresh-note {
+            text-align: center;
+            color: var(--secondary);
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: var(--gray);
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .results-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+        }
+        
+        /* Animation for cards */
+        .result-card:nth-child(1) { animation-delay: 0.1s; }
+        .result-card:nth-child(2) { animation-delay: 0.2s; }
+        .result-card:nth-child(3) { animation-delay: 0.3s; }
+        .result-card:nth-child(4) { animation-delay: 0.4s; }
+        .result-card:nth-child(5) { animation-delay: 0.5s; }
+        .result-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <h1>ইউটিউব টাইটেল জেনারেটর</h1>
+            <p class="subtitle">ইউটিউবের জন্য এসইও-অপ্টিমাইজড, ভাইরাল টাইটেল ও হ্যাশট্যাগ জেনারেট করুন। এআই প্রযুক্তি ব্যবহার করে রিয়েল-টাইমে সেরা টাইটেল তৈরি করুন</p>
+            <div class="ai-badge">
+                <i class="fas fa-robot"></i> এআই-চালিত রিয়েল-টাইম টাইটেল জেনারেশন
+            </div>
+        </header>
+        
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-cogs"></i> টাইটেল সেটিংস</h2>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="category"><i class="fas fa-folder-open"></i> ইউটিউব ক্যাটাগরি</label>
+                        <div class="input-icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <select id="category">
+                            <option value="" disabled selected>ক্যাটাগরি নির্বাচন করুন</option>
+                            <option value="Film & Animation">চলচ্চিত্র ও অ্যানিমেশন (Film & Animation)</option>
+                            <option value="Autos & Vehicles">অটোস ও যানবাহন (Autos & Vehicles)</option>
+                            <option value="Music">সঙ্গীত (Music)</option>
+                            <option value="Pets & Animals">পোষা প্রাণী ও প্রাণী (Pets & Animals)</option>
+                            <option value="Sports">খেলাধুলা (Sports)</option>
+                            <option value="Travel & Events">ভ্রমণ ও ইভেন্ট (Travel & Events)</option>
+                            <option value="Gaming">গেমিং (Gaming)</option>
+                            <option value="People & Blogs">মানুষ ও ব্লগ (People & Blogs)</option>
+                            <option value="Comedy">কমেডি (Comedy)</option>
+                            <option value="Entertainment">বিনোদন (Entertainment)</option>
+                            <option value="News & Politics">খবর ও রাজনীতি (News & Politics)</option>
+                            <option value="Howto & Style">হাউটু ও স্টাইল (Howto & Style)</option>
+                            <option value="Education">শিক্ষা (Education)</option>
+                            <option value="Science & Technology">বিজ্ঞান ও প্রযুক্তি (Science & Technology)</option>
+                            <option value="Nonprofits & Activism">অলাভজনক সংস্থা ও সক্রিয়তা (Nonprofits & Activism)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="viralFactor"><i class="fas fa-fire"></i> ভাইরাল লেভেল</label>
+                        <div class="input-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <select id="viralFactor">
+                            <option value="medium">মিডিয়াম</option>
+                            <option value="high">হাই ভাইরাল</option>
+                            <option value="extreme">এক্সট্রিম ভাইরাল</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="keywords"><i class="fas fa-key"></i> কীওয়ার্ডস (কমা দিয়ে আলাদা করুন)</label>
+                        <div class="input-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <input type="text" id="keywords" placeholder="আপনার ভিডিওর কীওয়ার্ড লিখুন">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description"><i class="fas fa-align-left"></i> ভিডিওর সংক্ষিপ্ত বিবরণ</label>
+                        <textarea id="description" placeholder="আপনার ভিডিওর বিষয়বস্তু সম্পর্কে সংক্ষিপ্ত বিবরণ লিখুন..."></textarea>
+                    </div>
+                </div>
+                
+                <button id="generateBtn">
+                    <i class="fas fa-bolt"></i> টাইটেল জেনারেট করুন
+                </button>
+                <p class="refresh-note">প্রতিবার ক্লিক করলে সম্পূর্ণ নতুন টাইটেল পাবেন!</p>
+            </div>
+            
+            <div class="loader" id="loader">
+                <div class="loader-spinner"></div>
+                <p>এআই আপনার টাইটেল তৈরি করছে...</p>
+            </div>
+            
+            <div class="card" id="resultsCard" style="display: none;">
+                <h2 class="card-title"><i class="fas fa-magic"></i> জেনারেটেড টাইটেলস</h2>
+                
+                <div class="results-container" id="resultsContainer">
+                    <!-- Results will be populated here by JavaScript -->
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-question-circle"></i> সাহায্য</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> গোপনীয়তা</a>
+                <a href="#"><i class="fas fa-envelope"></i> যোগাযোগ</a>
+            </div>
+            <p>© ২০২৩ ইউটিউব টাইটেল জেনারেটর - কন্টেন্ট ক্রিয়েটরদের জন্য পেশাদার টাইটেল জেনারেটর</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const loader = document.getElementById('loader');
+            const resultsCard = document.getElementById('resultsCard');
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            // Gemini API configuration
+            const API_KEY = 'AIzaSyAKo7IuMfCULFQxyUz2TUVywaIFspAvZdQ';
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+            
+            generateBtn.addEventListener('click', async function() {
+                const categorySelect = document.getElementById('category');
+                const category = categorySelect.value;
+                const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
+                const keywords = document.getElementById('keywords').value;
+                const description = document.getElementById('description').value;
+                const viralFactor = document.getElementById('viralFactor').value;
+                
+                if (!category) {
+                    alert('দয়া করে ইউটিউব ক্যাটাগরি নির্বাচন করুন');
+                    return;
+                }
+                
+                if (!keywords.trim() && !description.trim()) {
+                    alert('দয়া করে কীওয়ার্ডস অথবা ভিডিও বিবরণ লিখুন');
+                    return;
+                }
+                
+                // Show loader and disable button
+                loader.style.display = 'block';
+                resultsCard.style.display = 'none';
+                generateBtn.disabled = true;
+                generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> প্রসেসিং...';
+                
+                try {
+                    const titles = await generateTitlesWithAI(categoryText, keywords, description, viralFactor);
+                    displayResults(titles);
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('টাইটেল জেনারেট করতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।');
+                } finally {
+                    loader.style.display = 'none';
+                    generateBtn.disabled = false;
+                    generateBtn.innerHTML = '<i class="fas fa-bolt"></i> টাইটেল জেনারেট করুন';
+                }
+            });
+            
+            async function generateTitlesWithAI(category, keywords, description, viralFactor) {
+                // Construct the prompt for Gemini
+                const prompt = `
+                    আপনি একজন ইউটিউব এসইও বিশেষজ্ঞ হিসেবে কাজ করছেন। ইউটিউব ক্যাটাগরি: ${category} এর জন্য 6টি ভাইরাল, এসইও-অপ্টিমাইজড টাইটেল তৈরি করুন। 
+                    ভাইরাল লেভেল: ${viralFactor}, কীওয়ার্ডস: ${keywords}, বিবরণ: ${description}
+                    
+                    নির্দেশনা:
+                    1. প্রতিটি টাইটেল অনন্য এবং আকর্ষণীয় হতে হবে
+                    2. টাইটেলে ইমোজি ব্যবহার করতে হবে
+                    3. হ্যাশট্যাগ বাংলায় হতে হবে
+                    4. ভাইরাল লেভেল অনুযায়ী টাইটেলের স্টাইল পরিবর্তন করুন
+                    5. প্রতিক্রিয়াটি JSON ফরম্যাটে দিন: 
+                    [
+                        {
+                            "title": "টাইটেল ১",
+                            "hashtags": ["#হ্যাশট্যাগ১", "#হ্যাশট্যাগ২", ...]
+                        },
+                        ...
+                    ]
+                `;
+                
+                const requestBody = {
+                    contents: [{
+                        parts: [{
+                            text: prompt
+                        }]
+                    }],
+                    generationConfig: {
+                        temperature: 0.95, // More creative output
+                        maxOutputTokens: 1000
+                    }
+                };
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+                
+                const data = await response.json();
+                const responseText = data.candidates[0].content.parts[0].text;
+                
+                // Extract JSON from the response
+                const jsonStart = responseText.indexOf('[');
+                const jsonEnd = responseText.lastIndexOf(']') + 1;
+                const jsonString = responseText.substring(jsonStart, jsonEnd);
+                
+                return JSON.parse(jsonString);
+            }
+            
+            function displayResults(titles) {
+                // Clear previous results
+                resultsContainer.innerHTML = '';
+                
+                // Create result cards
+                titles.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'result-card';
+                    
+                    const badge = document.createElement('div');
+                    badge.className = 'viral-badge';
+                    badge.innerHTML = '<i class="fas fa-bolt"></i> ভাইরাল ট্রেন্ডিং';
+                    card.appendChild(badge);
+                    
+                    const titleEl = document.createElement('h3');
+                    titleEl.textContent = item.title;
+                    card.appendChild(titleEl);
+                    
+                    const hashtagContainer = document.createElement('div');
+                    hashtagContainer.className = 'hashtags';
+                    
+                    item.hashtags.forEach(tag => {
+                        const hashtagEl = document.createElement('span');
+                        hashtagEl.className = 'hashtag';
+                        hashtagEl.textContent = tag;
+                        hashtagContainer.appendChild(hashtagEl);
+                    });
+                    
+                    card.appendChild(hashtagContainer);
+                    
+                    const seoScore = document.createElement('div');
+                    seoScore.className = 'seo-score';
+                    seoScore.innerHTML = `<i class="fas fa-search"></i> এসইও স্কোর: <strong>${88 + index * 2}/100</strong>`;
+                    card.appendChild(seoScore);
+                    
+                    resultsContainer.appendChild(card);
+                });
+                
+                resultsCard.style.display = 'block';
+                resultsCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    </script>
+</body>
+</html>
